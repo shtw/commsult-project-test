@@ -1,14 +1,15 @@
 export const menu = [
   {
     label: "Produkte",
-    link: "produkte",
+    link: "/produkte",
     description: "",
     showLogo: true,
     children: [
       {
         label: "Funktionen",
-        link: "produkte/funktionen",
+        link: "/produkte/funktionen",
         description: "",
+        showLogo: false,
         children: [
           {
             label: "User Experience",
@@ -44,7 +45,7 @@ export const menu = [
       },
       {
         label: "Einsatzbereiche",
-        link: "produkte/einsatzbereiche",
+        link: "/produkte/einsatzbereiche",
         description: "",
         children: [
           { label: "Lagerlogistik", link: "#" },
@@ -57,7 +58,7 @@ export const menu = [
       },
       {
         label: "Mobile Geräte",
-        link: "produkte/mobile-gerate",
+        link: "/produkte/mobile-gerate",
         description: "Mobile Hardware für meine Mitarbeiter finden.",
       },
     ],
@@ -65,13 +66,16 @@ export const menu = [
   {
     label: "Warum Ontego?",
     link: "#",
+    showLogo: false,
   },
   {
     label: "Events",
     link: "#",
+    showLogo: false,
   },
   {
     label: "Ressourcen",
     link: "#",
+    showLogo: false,
   },
 ];

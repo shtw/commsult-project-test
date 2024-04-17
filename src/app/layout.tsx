@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { roboto, capitolium } from "@/fonts";
 import "./globals.css";
-import Header from "@/components/header";
+import { Header } from "@/components/layouts/header";
 import Footer from "@/components/footer";
 import ScrollTop from "@/components/scroll-top";
 
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(roboto.variable, capitolium.variable)}>
         <Header />
-        <main>{children}</main>
+        <main className="pt-56">{children}</main>
         <Footer />
         <ScrollTop />
       </body>
