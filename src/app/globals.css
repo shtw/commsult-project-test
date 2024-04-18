@@ -17,6 +17,7 @@
     --grey-300: #d5d5d5;
     --grey-400: #abadb1;
     --grey-500: #96999e;
+    --yellow: #d1b704;
     --radius: 0.5rem;
   }
 }
@@ -47,6 +48,16 @@
 
   u {
     @apply decoration-primary;
+  }
+
+  .transition-height {
+    transition: height 0.4s ease 0s;
+    /* min-height: 500px; */
+    /* height: 500px; */
+  }
+  .transition-height-close {
+    transition: height 0.4s ease 0s;
+    height: 300px;
   }
 }
 

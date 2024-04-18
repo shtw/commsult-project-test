@@ -6,6 +6,22 @@ export type Range = {
   max: number;
 };
 
+export interface ProductItem {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  weight: number;
+  favorite: boolean;
+  rental: boolean;
+  deviceType: string[];
+  manufacturer: string[];
+  operationArea: string[];
+  info: string[];
+  assesment: string;
+  manufacturerLink: string;
+}
+
 type State = {
   choice: string[];
   deviceType: string[];

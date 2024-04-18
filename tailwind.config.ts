@@ -64,6 +64,9 @@ const config: Config = {
           400: "var(--grey-400)",
           500: "var(--grey-500)",
         },
+        yellow: {
+          DEFAULT: "var(--yellow)",
+        },
         toggle: {
           DEFAULT: "var(--toggle)",
           foreground: "var(--toggle-foreground)",
@@ -91,10 +94,22 @@ const config: Config = {
           from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: "0" },
         },
+        "collapsible-product-down": {
+          from: { height: "0" },
+          to: { opacity: "1", height: "calc(500px+var(--height))" },
+        },
+        "collapsible-product-up": {
+          from: { height: "calc(500px+var(--height))" },
+          to: { height: "0" },
+        },
       },
       animation: {
         "collapsible-down": "collapsible-down 0.2s ease-out",
         "collapsible-up": "collapsible-up 0.2s ease-out",
+        "collapsible-2-down": "collapsible-down .5s ease",
+        "collapsible-2-up": "collapsible-up 0.5s ease",
+        "collapsible-product-down": "collapsible-product-down .5s ease-out",
+        "collapsible-product-up": "collapsible-product-up .5s ease-out",
       },
     },
   },
