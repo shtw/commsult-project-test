@@ -139,8 +139,8 @@ export const Nav = ({ items }: { items: MenuItemProps[] }) => {
       {items.map((parentMenu, pid) => (
         <MenuItem menu={parentMenu} level={1} key={pid}>
           {parentMenu.children ? (
-            <MenuDropdown>
-              <MenuDropdownContent showLogo={parentMenu.showLogo}>
+            <MenuDropdown key={pid}>
+              <MenuDropdownContent showLogo={parentMenu.showLogo} key={pid}>
                 {parentMenu.children?.map((childMenu, cid) => (
                   <MenuList key={cid}>
                     <MenuItem menu={childMenu} level={2} showDescription>
@@ -166,22 +166,23 @@ export const NavBottom = ({ items }: { items: MenuItemProps[] }) => {
   const parentMenu = getCurrentParentMenu(pathname);
 
   const menu = useMemo(() => {
-    console.log(parentMenu);
     return items?.find((item) => item.link === parentMenu);
   }, [items, parentMenu]);
-
-  console.log(menu);
 
   if (menu) {
     return (
       <div className="bg-white py-4 shadow-3xl">
-        <MenuDropdownContent showLogo={menu?.showLogo}>
+        <MenuDropdownContent showLogo={menu?.showLogo} key={"menuDropdown"}>
           {menu.children?.map((childMenu, cid) => (
-            <MenuList>
+            <MenuList key={cid}>
               <MenuItem menu={childMenu} level={2}>
                 <MenuList collapsible>
                   {childMenu?.children?.map((grandChildMenu, gid) => (
-                    <MenuItem menu={grandChildMenu} level={3}></MenuItem>
+                    <MenuItem
+                      menu={grandChildMenu}
+                      level={3}
+                      key={gid}
+                    ></MenuItem>
                   ))}
                 </MenuList>
               </MenuItem>

@@ -1,0 +1,45 @@
+{
+  "choice": [
+    "Alle Geräte",
+    "Unsere Favoriten",
+    "Mietgeräte"
+  ],
+  "deviceType": [
+    "Handheld-Computer",
+    "Smartphone",
+    "Staplerterminal/Tablet",
+    "Wearable/Handscanner",
+    "Drucker"
+  ],
+  "manufacturer": [
+    "ACD",
+    "Advantech",
+    "Bixolon",
+    "Casio",
+    "CAT",
+    "Cipherlab",
+    "Datalogic",
+    "Feig",
+    "Getac",
+    "Gigaset",
+    "Honeywell",
+    "i.Safe Mobile",
+    "iData",
+    "Keyence",
+    "KoamTac",
+    "Newland",
+    "Panasonic",
+    "Point Mobile",
+    "ProGlove",
+    "Samsung",
+    "Zebra"
+  ],
+  "operationArea": [
+    "Lager & Produktion",
+    "Getränkelogistik",
+    "Instandhaltung",
+    "Field Service",
+    "Healthcare",
+    "Ex-geschützt"
+  ]
+}

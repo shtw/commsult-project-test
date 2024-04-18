@@ -1,5 +1,8 @@
 import Hero from "@/components/sections/hero";
 import Paragraph from "@/components/sections/paragraph";
+import dynamic from "next/dynamic";
+
+const Product = dynamic(() => import("@/components/sections/product/product"));
 
 export default function MobilGerate() {
   return (
@@ -18,6 +21,7 @@ export default function MobilGerate() {
     robusten Smartphones
     und mobilen Druckern."
       />
+      <Product />
     </>
   );
 }

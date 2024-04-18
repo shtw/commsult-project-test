@@ -59,6 +59,16 @@ const config: Config = {
         },
         grey: {
           DEFAULT: "var(--grey)",
+          200: "var(--grey-200)",
+          300: "var(--grey-300)",
+          400: "var(--grey-400)",
+          500: "var(--grey-500)",
+        },
+        toggle: {
+          DEFAULT: "var(--toggle)",
+          foreground: "var(--toggle-foreground)",
+          hover: "var(--toggle-hover)",
+          "hover-foreground": "var(--toggle-hover-foreground)",
         },
       },
       borderRadius: {
@@ -71,6 +81,20 @@ const config: Config = {
       },
       boxShadow: {
         "3xl": "0 20px 29px 0 rgba(0, 0, 0, 0.15)",
+      },
+      keyframes: {
+        "collapsible-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "collapsible-down": "collapsible-down 0.2s ease-out",
+        "collapsible-up": "collapsible-up 0.2s ease-out",
       },
     },
   },
