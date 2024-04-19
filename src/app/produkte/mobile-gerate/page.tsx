@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Hero from "@/components/sections/hero";
 import Paragraph from "@/components/sections/paragraph";
-import dynamic from "next/dynamic";
 
 const Product = dynamic(() => import("@/components/sections/product/product"));
+
+export const metadata: Metadata = {
+  title: "Ontego Hardware Finder",
+  description:
+    "Mobilcomputer, mobile Scanner, Terminals und Handhelds von Zebra, Honeywell und Samsung für die mobile Datenerfassung.",
+};
 
 export default function MobilGerate() {
   return (
