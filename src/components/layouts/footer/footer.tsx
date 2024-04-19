@@ -7,9 +7,11 @@ import { Drawer } from "@/components/ui/drawer";
 import Imprint from "./imprint";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import DataProtection from "./data-protection";
 
 export default function Footer() {
   const [imprint, setImprint] = useState<boolean>(false);
+  const [dataProtection, setDataProtection] = useState<boolean>(false);
 
   return (
     <>
@@ -43,14 +45,19 @@ export default function Footer() {
               </div>
               <div className="flex gap-4">
                 <Button
-                  variant={"link-secondary"}
+                  variant={"text-secondary"}
                   size={"sm"}
                   shrink
                   onClick={() => setImprint(true)}
                 >
                   Impressum
                 </Button>
-                <Button variant={"link-secondary"} size={"sm"} shrink>
+                <Button
+                  variant={"text-secondary"}
+                  size={"sm"}
+                  shrink
+                  onClick={() => setDataProtection(true)}
+                >
                   Datenschutz
                 </Button>
               </div>
@@ -123,6 +130,9 @@ export default function Footer() {
 
       <Drawer open={imprint} setOpen={setImprint}>
         <Imprint />
+      </Drawer>
+      <Drawer open={dataProtection} setOpen={setDataProtection}>
+        <DataProtection />
       </Drawer>
     </>
   );

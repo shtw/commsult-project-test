@@ -10,11 +10,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "border border-primary bg-transparent px-4 text-primary transition-[color,box-shadow] duration-700 hover:text-primary hover:shadow-[inset_13rem_0_0_0] hover:shadow-primary",
+          "border border-primary bg-transparent px-4 text-primary transition-[color,box-shadow] duration-700 hover:text-white hover:shadow-[inset_13rem_0_0_0] hover:shadow-primary",
         secondary:
           "border border-white bg-transparent px-4 text-white transition-[color,box-shadow] duration-700 hover:text-primary hover:shadow-[inset_13rem_0_0_0] hover:shadow-white",
-        link: "font-medium text-primary",
-        "link-secondary": "font-medium text-white",
+        text: "font-medium text-primary",
+        "text-secondary": "font-medium text-white",
+        link: "relative font-medium text-primary after:absolute after:left-0 after:bottom-0 after:w-0 after:border-b-2 after:border-primary-darken after:transition-all hover:after:w-full",
       },
       icon: {
         default: "justify-between",
@@ -26,7 +27,6 @@ const buttonVariants = cva(
       full: {
         true: "w-full",
       },
-
       size: {
         default: "h-10 px-4 py-2",
         sm: "text-[14px]",
@@ -67,7 +67,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(
-          buttonVariants({ variant, size, full, shrink, align, className }),
+          buttonVariants({
+            variant,
+            size,
+            full,
+            shrink,
+            align,
+            className,
+          }),
         )}
         ref={ref}
         {...props}

@@ -206,14 +206,11 @@ function Filter() {
             </p>
           </div>
           <div className="flex gap-8">
-            <button
-              className="font-medium text-primary"
-              onClick={() => resetFilter()}
-            >
+            <Button variant={"text"} shrink onClick={() => resetFilter()}>
               Filter zurücksetzen
-            </button>
+            </Button>
             <CollapsibleTrigger asChild>
-              <Button variant={"link"}>
+              <Button variant={"text"} shrink>
                 {expandFilter ? "Filter ausblenden" : "Mehr Filter anzeigen"}
               </Button>
             </CollapsibleTrigger>
