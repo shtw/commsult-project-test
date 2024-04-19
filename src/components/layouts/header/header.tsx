@@ -38,14 +38,14 @@ export default function Header() {
     <header className="fixed z-50 w-full">
       <div className={cn(HeaderVariant({ expand: expandMenu }))}>
         <div className="container flex h-12 flex-wrap items-center justify-center">
-          <a href="/" className="w-6/12 lg:w-2/12">
+          <Link href="/" className="w-6/12 lg:w-2/12">
             <Image
               src="/images/ontego-bussines-mobility.svg"
               width={165}
               height={22}
               alt="ontego business mobility"
             />
-          </a>
+          </Link>
           <div className="w-6/12 text-right  lg:hidden">
             <BurgerMenu expand={expandMenu} setExpand={setExpandMenu} />
           </div>
@@ -72,17 +72,5 @@ export default function Header() {
       </div>
       <NavBottom items={menu} />
     </header>
-  );
-}
-
-function LinkDemo() {
-  return (
-    <Link
-      href="#"
-      className="flex h-8 min-w-[150px] items-center justify-between border border-white bg-transparent px-4 text-[12px] text-white transition-[color,box-shadow] duration-700 hover:text-primary hover:shadow-[inset_13rem_0_0_0] hover:shadow-white"
-    >
-      <span>Demo anfragen</span>
-      <ArrowRight width={18} />
-    </Link>
   );
 }

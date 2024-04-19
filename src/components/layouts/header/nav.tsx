@@ -5,6 +5,7 @@ import { cn, getCurrentParentMenu, getSelectedMenu } from "@/lib/utils";
 import { ReactNode, useMemo } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 interface MenuItemProps {
   label: string;
@@ -66,7 +67,7 @@ const MenuItem = ({
 }) => {
   return (
     <li className={cn(MenuItemVariant({ level }))}>
-      <a href={menu.link} className={cn(MenuLinkVariant({ level }))}>
+      <Link href={menu.link} className={cn(MenuLinkVariant({ level }))}>
         {level === 2 ? (
           <div className="mb-2">
             <span className={cn(MenuLabelVariant({ level }))}>
@@ -76,7 +77,7 @@ const MenuItem = ({
         ) : (
           menu.label
         )}
-      </a>
+      </Link>
       {showDescription && menu.description && level === 2 ? (
         <p className="w-[150px] font-heading text-sm italic text-mute max-lg:mx-auto">
           {menu.description}
