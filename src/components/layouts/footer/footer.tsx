@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Drawer } from "@/components/ui/drawer";
 import Imprint from "./imprint";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   const [imprint, setImprint] = useState<boolean>(false);
@@ -41,15 +42,17 @@ export default function Footer() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <button
-                  className="text-sm tracking-wider text-white"
+                <Button
+                  variant={"link-secondary"}
+                  size={"sm"}
+                  shrink
                   onClick={() => setImprint(true)}
                 >
-                  Impressum{" "}
-                </button>
-                <button className="text-sm tracking-wider text-white">
-                  Datenschutz{" "}
-                </button>
+                  Impressum
+                </Button>
+                <Button variant={"link-secondary"} size={"sm"} shrink>
+                  Datenschutz
+                </Button>
               </div>
             </div>
             <div className="w-full sm:!mt-0 sm:w-1/2 md:w-4/12 md:pl-6">

@@ -8,6 +8,7 @@ import { BurgerMenu, Nav, NavBottom } from "./nav";
 import { useState } from "react";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const NavVariant = cva(
   "max-lg:fixed max-lg:left-1/2 max-lg:right-1/2 max-lg:mx-[-50vw] max-lg:w-screen max-lg:opacity-0 max-lg:invisible",
@@ -54,7 +55,18 @@ export default function Header() {
             </nav>
           </div>
           <div className="hidden lg:block lg:w-2/12">
-            <LinkDemo />
+            <Button
+              variant={"secondary"}
+              size={"xs"}
+              align={"between"}
+              full
+              asChild
+            >
+              <Link href={"#"}>
+                <span>Demo anfragen</span>
+                <ArrowRight width={18} />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

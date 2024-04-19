@@ -22,6 +22,7 @@ import useProductHook from "./product-hook";
 import { cn, filterItemClass } from "@/lib/utils";
 import { XIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 function FilterGroupChoice({
   label,
@@ -198,7 +199,7 @@ function Filter() {
           </div>
         </CollapsibleContent>
 
-        <div className="m-auto flex max-w-3xl justify-between">
+        <div className="m-auto flex max-w-3xl items-center justify-between">
           <div>
             <p className="text-[12px] tracking-wider text-mute">
               Alle Angaben / Preise ohne Gewähr
@@ -211,8 +212,10 @@ function Filter() {
             >
               Filter zurücksetzen
             </button>
-            <CollapsibleTrigger className="font-medium text-primary">
-              {expandFilter ? "Filter ausblenden" : "Mehr Filter anzeigen"}
+            <CollapsibleTrigger asChild>
+              <Button variant={"link"}>
+                {expandFilter ? "Filter ausblenden" : "Mehr Filter anzeigen"}
+              </Button>
             </CollapsibleTrigger>
           </div>
         </div>
