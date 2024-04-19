@@ -2,13 +2,31 @@
 
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { ReactNode } from "react";
+import { ReactNode, createContext, useContext } from "react";
 
-export default function Main({ children }: { children: ReactNode }) {
+interface MainContextProps {
+  mobile: boolean | null;
+}
+
+export const MainContext = createContext<MainContextProps>({
+  mobile: null,
+});
+
+export const useMainContext = () => useContext(MainContext);
+
+export default function Main({
+  children,
+  mobile,
+}: {
+  children: ReactNode;
+  mobile: boolean | null;
+}) {
   const pathname = usePathname();
   return (
-    <main className={cn(pathname !== "/" ? "pt-20 lg:pt-56" : "")}>
-      {children}
-    </main>
+    <MainContext.Provider value={{ mobile }}>
+      <main className={cn(pathname !== "/" ? "pt-20 lg:pt-56" : "")}>
+        {children}
+      </main>
+    </MainContext.Provider>
   );
 }

@@ -6,6 +6,7 @@ import { Footer } from "@/components/layouts/footer";
 import ScrollTop from "@/components/scroll-top";
 import Main from "@/components/main";
 import "./globals.css";
+import { isMobileDevice } from "@/lib/mobile";
 
 export const metadata: Metadata = {
   title: "Die beste Wahl für mobile SAP Anwendungen",
@@ -16,16 +17,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMobile = await isMobileDevice();
   return (
     <html lang="en">
       <body className={cn(roboto.variable, capitolium.variable)}>
         <Header />
-        <Main>{children}</Main>
+        <Main mobile={isMobile}>{children}</Main>
         <Footer />
         <ScrollTop />
       </body>

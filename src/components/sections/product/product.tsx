@@ -16,7 +16,6 @@ import {
   weightDefault,
 } from "./product-store";
 import { Slider } from "@/components/ui/slider";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import productFilter from "@/data/product-filter.json";
 import useProductHook from "./product-hook";
 import { cn, filterItemClass } from "@/lib/utils";
@@ -24,6 +23,7 @@ import { ArrowRight, XIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useMainContext } from "@/components/main";
 
 function FilterGroupChoice({
   label,
@@ -224,7 +224,7 @@ function Filter() {
 
 function Mobile() {
   return (
-    <div className="container-sm block pb-[60px]">
+    <div className="container-sm block pb-[60px] lg:hidden ">
       <h5 className="mb-4 text-[26px]">
         Hier haben wir leider nicht genug Platz ...
       </h5>
@@ -422,27 +422,30 @@ function ProductCard({ item }: { item: ProductItem }) {
 
 function Products() {
   const { products } = useProductHook();
-  return products.map((product, index) => (
+  return products.map((product) => (
     <ProductCard item={product} key={product.id} />
   ));
 }
 
 export default function Product() {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  if (isMobile) {
+  const { mobile } = useMainContext();
+
+  if (mobile) {
     return <Mobile />;
   }
 
   return (
-    <div className="container-sm mb-40">
-      <Filter />
-      <div className="relative">
-        <motion.ul layout className="grid grid-cols-4 gap-x-4 gap-y-8">
-          <AnimatePresence>
-            <Products />
-          </AnimatePresence>
-        </motion.ul>
+    <>
+      <div className="container-sm mb-40 hidden lg:block">
+        <Filter />
+        <div className="relative">
+          <motion.ul layout className="grid grid-cols-4 gap-x-4 gap-y-8">
+            <AnimatePresence>
+              <Products />
+            </AnimatePresence>
+          </motion.ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
