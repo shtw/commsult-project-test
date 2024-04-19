@@ -20,9 +20,10 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import productFilter from "@/data/product-filter.json";
 import useProductHook from "./product-hook";
 import { cn, filterItemClass } from "@/lib/utils";
-import { XIcon } from "lucide-react";
+import { ArrowRight, XIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function FilterGroupChoice({
   label,
@@ -345,7 +346,7 @@ function ProductCard({ item }: { item: ProductItem }) {
         >
           <div
             className={cn(
-              "relative bg-white pb-12 pt-16 transition-opacity delay-500",
+              "relative bg-white pt-16 transition-opacity delay-500",
               expand ? "opacity-100" : "opacity-0",
             )}
           >
@@ -394,7 +395,7 @@ function ProductCard({ item }: { item: ProductItem }) {
                   ))}
                 </ToggleGroup>
               </div>
-              <div className="col-span-5">
+              <div className="col-span-5 flex flex-col gap-4">
                 <div className="border-4 border-primary p-5 text-primary">
                   <h4 className="mb-4 font-body text-sm font-medium tracking-wider">
                     Unsere Einschätzung
@@ -403,6 +404,13 @@ function ProductCard({ item }: { item: ProductItem }) {
                     {item.assesment}
                   </p>
                 </div>
+
+                <Button variant="link" shrink asChild className="ml-auto">
+                  <Link href={item.manufacturerLink} target="_blank">
+                    <span className="inline-block">Zum Hersteller</span>
+                    <ArrowRight width={18} />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
