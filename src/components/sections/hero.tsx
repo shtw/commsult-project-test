@@ -9,13 +9,13 @@ export default function Hero({
 }) {
   return (
     <div className="container-sm relative mb-[60px] flex flex-wrap items-center">
-      <div className="z-10 w-full max-md:mb-[60px] md:absolute md:w-7/12">
+      <div className="z-10 w-full max-lg:order-2 md:absolute md:w-7/12 lg:mb-[60px]">
         <h1
           className="left-0 text-[40px] font-bold leading-[46px] text-black md:text-[56px] md:leading-[62px]"
           dangerouslySetInnerHTML={{ __html: title }}
         />
       </div>
-      <div className="relative w-full overflow-hidden md:ml-auto md:w-8/12">
+      <div className="relative w-full overflow-hidden max-lg:order-1 max-lg:mb-[60px] md:ml-auto md:w-8/12">
         <div
           className="relative aspect-[3/2] md:aspect-video md:after:absolute
           md:after:inset-0
