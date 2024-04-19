@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { roboto, capitolium } from "@/fonts";
-import "./globals.css";
 import { Header } from "@/components/layouts/header";
-import Footer from "@/components/footer";
+import { Footer } from "@/components/layouts/footer";
 import ScrollTop from "@/components/scroll-top";
 import Main from "@/components/main";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Die beste Wahl für mobile SAP Anwendungen",
