@@ -16,8 +16,9 @@ export default function DataProtection() {
         betriebenen Websites unter www.commsult.de und www.ontego.de. Letztere
         ist eine Produkt-Informationsseite, die durch den verantwortlichen
         Hersteller commsult AG gepflegt wird. Die Gesamtheit dieser Websites
-        werden im Folgenden als "Internetseite" oder "Internetseiten"
-        bezeichnet. Diese Datenschutzerklärung können Sie auch als PDF unter{" "}
+        werden im Folgenden als &quot;Internetseite&quot; oder
+        &quot;Internetseiten&quot; bezeichnet. Diese Datenschutzerklärung können
+        Sie auch als PDF unter{" "}
         <Button variant={"link"} size={"sm"} shrink asChild>
           <a
             href="https://www.commsult.de/assets/pdf/datenschutz_commsult-ontego_web.pdf"
@@ -1005,11 +1006,11 @@ export default function DataProtection() {
         <br />
         <br />
         Der für die Verarbeitung Verantwortliche verwendet für die Web-Analyse
-        über Google Analytics den Zusatz "_gat._anonymizeIp". Mittels dieses
-        Zusatzes wird die IP-Adresse des Internetanschlusses der betroffenen
-        Person von Google gekürzt und anonymisiert, wenn der Zugriff auf unsere
-        Internetseiten aus einem Mitgliedstaat der Europäischen Union oder aus
-        einem anderen Vertragsstaat des Abkommens über den Europäischen
+        über Google Analytics den Zusatz &quot;_gat._anonymizeIp&quot;. Mittels
+        dieses Zusatzes wird die IP-Adresse des Internetanschlusses der
+        betroffenen Person von Google gekürzt und anonymisiert, wenn der Zugriff
+        auf unsere Internetseiten aus einem Mitgliedstaat der Europäischen Union
+        oder aus einem anderen Vertragsstaat des Abkommens über den Europäischen
         Wirtschaftsraum erfolgt.
         <br />
         <br />
@@ -1226,13 +1227,14 @@ export default function DataProtection() {
       <br />
       <p>
         Auf diesen Internetseiten werden externe Schriften, Google Fonts
-        verwendet. Google Fonts ist ein Dienst der Google Inc. ("Google"). Die
-        Einbindung dieser Web Fonts erfolgt durch einen Serveraufruf, in der
-        Regel ein Server von Google in den USA. Hierdurch wird an den Server
-        übermittelt, welche unserer Internetseiten Sie besucht haben. Auch wird
-        die IP-Adresse des Browsers des Endgerätes des Besuchers dieser
-        Internetseiten von Google gespeichert. Nähere Informationen finden Sie
-        in den Datenschutzhinweisen von Google, die Sie hier abrufen können:{" "}
+        verwendet. Google Fonts ist ein Dienst der Google Inc.
+        (&quot;Google&quot;). Die Einbindung dieser Web Fonts erfolgt durch
+        einen Serveraufruf, in der Regel ein Server von Google in den USA.
+        Hierdurch wird an den Server übermittelt, welche unserer Internetseiten
+        Sie besucht haben. Auch wird die IP-Adresse des Browsers des Endgerätes
+        des Besuchers dieser Internetseiten von Google gespeichert. Nähere
+        Informationen finden Sie in den Datenschutzhinweisen von Google, die Sie
+        hier abrufen können:{" "}
         <Button variant={"link"} size={"sm"} shrink asChild>
           <a
             href="https://www.google.de/intl/de/policies/privacy/"
