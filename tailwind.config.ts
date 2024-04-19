@@ -108,8 +108,11 @@ const config: Config = {
         "collapsible-up": "collapsible-up 0.2s ease-out",
         "collapsible-2-down": "collapsible-down .5s ease",
         "collapsible-2-up": "collapsible-up 0.5s ease",
-        "collapsible-product-down": "collapsible-product-down .5s ease-out",
-        "collapsible-product-up": "collapsible-product-up .5s ease-out",
+        "collapsible-product-down": "collapsible-product-down 2s ease-out",
+        "collapsible-product-up": "collapsible-product-up 2s ease-out",
+      },
+      transitionProperty: {
+        height: "height",
       },
     },
   },

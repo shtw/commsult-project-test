@@ -65,17 +65,58 @@ export const menu = [
   },
   {
     label: "Warum Ontego?",
-    link: "#",
+    link: "/warum",
     showLogo: false,
+    children: [
+      {
+        label: "Gute Gründe",
+        link: "#",
+        description: "Warum Unternehmen auf Ontego Business Mobility setzen.",
+      },
+      {
+        label: "Im Einsatz",
+        link: "#",
+        description: "",
+        children: [{ label: "Referenzen", link: "#" }],
+      },
+      {
+        label: "Das sind wir",
+        link: "#",
+        description: "",
+        children: [
+          { label: "Unternehmen", link: "#" },
+          { label: "Standorte", link: "#" },
+          { label: "Karriere", link: "#" },
+        ],
+      },
+    ],
   },
   {
     label: "Events",
     link: "#",
     showLogo: false,
+    children: [
+      {
+        label: "Messen & Kongresse",
+        link: "#",
+        children: [
+          { label: "VLB Logistikfachkongress 2024", link: "#" },
+          { label: "LogiMAT 2024", link: "#" },
+        ],
+      },
+    ],
   },
   {
     label: "Ressourcen",
     link: "#",
     showLogo: false,
+    children: [
+      {
+        label: "Mobility Blog",
+        link: "#",
+        description:
+          "Informationen und Tipps rund um MDE für SAP und andere ERP-Systeme.",
+      },
+    ],
   },
 ];

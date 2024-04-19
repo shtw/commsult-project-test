@@ -51,12 +51,12 @@
   }
 
   .transition-height {
-    transition: height 0.4s ease 0s;
+    transition: height 0.8s ease 0s;
     /* min-height: 500px; */
     /* height: 500px; */
   }
   .transition-height-close {
-    transition: height 0.4s ease 0s;
+    transition: height 0.8s ease 0s;
     height: 300px;
   }
 }

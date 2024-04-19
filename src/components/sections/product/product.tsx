@@ -309,7 +309,7 @@ function ProductCard({ item }: { item: ProductItem }) {
             onClick={() =>
               setTimeout(() => {
                 setExpand(true);
-              }, 850)
+              }, 950)
             }
           >
             <div className="absolute -right-1 top-0 z-10 flex gap-1">
@@ -341,7 +341,7 @@ function ProductCard({ item }: { item: ProductItem }) {
         <CollapsibleContent
           ref={collapseRef}
           forceMount
-          className="data-[state=closed]:animate-collapsible-2-up data-[state=open]:animate-collapsible-2-down absolute left-0 top-auto w-full overflow-hidden data-[state=closed]:invisible data-[state=closed]:overflow-hidden"
+          className="absolute left-0 top-auto w-full overflow-hidden data-[state=closed]:invisible data-[state=closed]:animate-collapsible-2-up data-[state=open]:animate-collapsible-2-down data-[state=closed]:overflow-hidden"
         >
           <div
             className={cn(

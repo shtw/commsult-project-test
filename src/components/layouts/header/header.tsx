@@ -1,8 +1,67 @@
+"use client";
+
 import Image from "next/image";
 import { menu } from "@/data/menu";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Nav, NavBottom } from "./nav";
+import { BurgerMenu, Nav, NavBottom } from "./nav";
+import { useState } from "react";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const NavVariant = cva(
+  "max-lg:fixed max-lg:left-1/2 max-lg:right-1/2 max-lg:mx-[-50vw] max-lg:w-screen max-lg:opacity-0 max-lg:invisible",
+  {
+    variants: {
+      expand: {
+        true: "max-lg:top-12 max-lg:border-t max-lg:border-t-white max-lg:opacity-100 max-lg:visible",
+      },
+    },
+  },
+);
+
+const HeaderVariant = cva(
+  "h-12 bg-gradient-down from-primary to-primary-darken transition-height",
+  {
+    variants: {
+      expand: {
+        true: "max-lg:h-screen",
+      },
+    },
+  },
+);
+
+export default function Header() {
+  const [expandMenu, setExpandMenu] = useState<boolean>(false);
+  return (
+    <header className="fixed z-50 w-full">
+      <div className={cn(HeaderVariant({ expand: expandMenu }))}>
+        <div className="container flex h-12 flex-wrap items-center justify-center">
+          <a href="/" className="w-6/12 lg:w-2/12">
+            <Image
+              src="/images/ontego-bussines-mobility.svg"
+              width={165}
+              height={22}
+              alt="ontego business mobility"
+            />
+          </a>
+          <div className="w-6/12 text-right  lg:hidden">
+            <BurgerMenu expand={expandMenu} setExpand={setExpandMenu} />
+          </div>
+          <div className="lg:w-8/12">
+            <nav className={cn(NavVariant({ expand: expandMenu }))}>
+              <Nav items={menu} />
+            </nav>
+          </div>
+          <div className="hidden lg:block lg:w-2/12">
+            <LinkDemo />
+          </div>
+        </div>
+      </div>
+      <NavBottom items={menu} />
+    </header>
+  );
+}
 
 function LinkDemo() {
   return (
@@ -13,33 +72,5 @@ function LinkDemo() {
       <span>Demo anfragen</span>
       <ArrowRight width={18} />
     </Link>
-  );
-}
-
-export default function Header() {
-  return (
-    <header className="fixed z-50 w-full">
-      <div className="bg-gradient-down from-primary to-primary-darken">
-        <div className="container grid grid-cols-12 items-center">
-          <a href="/" className="col-span-2">
-            <Image
-              src="/images/ontego-bussines-mobility.svg"
-              width={165}
-              height={22}
-              alt="ontego business mobility"
-              style={{ width: "100%", height: "auto" }}
-            />
-          </a>
-
-          <nav className="col-span-8">
-            <Nav items={menu} />
-          </nav>
-          <div className="col-span-2">
-            <LinkDemo />
-          </div>
-        </div>
-      </div>
-      <NavBottom items={menu} />
-    </header>
   );
 }
