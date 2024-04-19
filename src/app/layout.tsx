@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layouts/header";
 import Footer from "@/components/footer";
 import ScrollTop from "@/components/scroll-top";
+import Main from "@/components/main";
 
 export const metadata: Metadata = {
   title: "Die beste Wahl für mobile SAP Anwendungen",
@@ -24,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(roboto.variable, capitolium.variable)}>
         <Header />
-        <main className="pt-56">{children}</main>
+        <Main>{children}</Main>
         <Footer />
         <ScrollTop />
       </body>
