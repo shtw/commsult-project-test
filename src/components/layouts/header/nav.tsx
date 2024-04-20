@@ -67,7 +67,11 @@ const MenuItem = ({
 }) => {
   return (
     <li className={cn(MenuItemVariant({ level }))}>
-      <Link href={menu.link} className={cn(MenuLinkVariant({ level }))}>
+      <Link
+        href={menu.link}
+        className={cn(MenuLinkVariant({ level }))}
+        prefetch={false}
+      >
         {level === 2 ? (
           <div className="mb-2">
             <span className={cn(MenuLabelVariant({ level }))}>
