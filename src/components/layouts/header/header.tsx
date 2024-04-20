@@ -44,6 +44,7 @@ export default function Header() {
               width={165}
               height={22}
               alt="ontego business mobility"
+              priority
             />
           </Link>
           <div className="w-6/12 text-right  lg:hidden">
