@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/sections/hero";
 import Paragraph from "@/components/sections/paragraph";
 import { promises as fs } from "fs";
-import { Suspense } from "react";
+import path from "path";
 
 const Product = dynamic(() => import("@/components/sections/product/product"));
 
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 
 export default async function MobilGerate() {
   const productFile = await fs.readFile(
-    process.cwd() + "/src/data/products.json",
+    path.join(process.cwd(), "public", "products.json"),
     "utf8",
   );
   const filterFile = await fs.readFile(
-    process.cwd() + "/src/data/product-filter.json",
+    path.join(process.cwd(), "public", "product-filter.json"),
     "utf8",
   );
 
