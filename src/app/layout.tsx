@@ -24,7 +24,7 @@ export default async function RootLayout({
 }>) {
   const isMobile = await isMobileDevice();
   return (
-    <html lang="en">
+    <html lang="de-DE">
       <body className={cn(roboto.variable, capitolium.variable)}>
         <Header />
         <Main mobile={isMobile}>{children}</Main>
