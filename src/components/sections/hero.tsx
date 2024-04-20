@@ -9,7 +9,7 @@ export default function Hero({
 }) {
   return (
     <div className="container-sm relative mb-[60px] flex flex-wrap items-center">
-      <div className="z-10 w-full max-lg:order-2 md:absolute md:w-7/12 lg:mb-[60px]">
+      <div className="z-10 w-full max-lg:order-2  md:absolute md:w-7/12">
         <h1
           className="left-0 text-[40px] font-bold leading-[46px] text-black md:text-[56px] md:leading-[62px]"
           dangerouslySetInnerHTML={{ __html: title }}
@@ -31,9 +31,10 @@ export default function Hero({
             src={image}
             quality={100}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 300px, (max-width: 1200px) 50vw, 33vw"
             alt="hero-image"
             className="object-cover"
+            priority
           />
         </div>
       </div>
