@@ -300,9 +300,9 @@ function ProductCard({ item }: { item: ProductItem }) {
             layout
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
+            exit={{ scale: 0.5, opacity: 0 }}
             transition={{
-              duration: 0.5,
+              duration: 0.4,
             }}
           >
             <div
@@ -423,9 +423,13 @@ function ProductCard({ item }: { item: ProductItem }) {
 
 function Products() {
   const { products } = useProductHook();
-  return products.map((product) => (
-    <ProductCard item={product} key={product.id} />
-  ));
+  return (
+    <AnimatePresence>
+      {products.map((product) => (
+        <ProductCard item={product} key={product.id} />
+      ))}
+    </AnimatePresence>
+  );
 }
 
 export default function Product({
@@ -454,13 +458,9 @@ export default function Product({
       <div className="container-sm mb-40 hidden lg:block">
         <Filter data={filter} />
         <div className="relative">
-          <LazyMotion features={loadFeature}>
-            <m.ul layout className="grid min-h-96 grid-cols-4 gap-x-4 gap-y-8">
-              <AnimatePresence>
-                <Products />
-              </AnimatePresence>
-            </m.ul>
-          </LazyMotion>
+          <ul className="grid min-h-96 grid-cols-4 gap-x-4 gap-y-8">
+            <Products />
+          </ul>
         </div>
       </div>
     </>
