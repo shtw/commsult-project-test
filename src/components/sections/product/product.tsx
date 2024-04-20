@@ -438,15 +438,16 @@ export default function Product({
   // console.log(data, filter);
   const { mobile } = useMainContext();
   const setProductData = useProduct.use.setProductData();
+  const setProductFilterData = useProduct.use.setProductFilterData();
 
   useEffect(() => {
     setProductData(data);
-  }, [data, filter, setProductData]);
+    setProductFilterData(filter);
+  }, [data, filter, setProductData, setProductFilterData]);
 
   if (mobile) {
     return <Mobile />;
   }
-  // return null;
 
   return (
     <>
@@ -454,7 +455,7 @@ export default function Product({
         <Filter data={filter} />
         <div className="relative">
           <LazyMotion features={loadFeature}>
-            <m.ul layout className="grid grid-cols-4 gap-x-4 gap-y-8">
+            <m.ul layout className="grid min-h-96 grid-cols-4 gap-x-4 gap-y-8">
               <AnimatePresence>
                 <Products />
               </AnimatePresence>
