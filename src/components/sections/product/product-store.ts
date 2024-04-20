@@ -105,7 +105,8 @@ const useProductStore = create<State & Action>()((set) => ({
   setWeight: (value) =>
     set(() => ({ weight: { min: value[0], max: value[1] } })),
   reset: () => {
-    set(initialState);
+    const { productData, productFilterData, ...rest } = initialState;
+    set(rest);
   },
 }));
 
