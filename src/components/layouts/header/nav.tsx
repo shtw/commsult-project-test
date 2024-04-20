@@ -109,13 +109,15 @@ const MenuDropdownContent = ({
     <div className="container flex flex-wrap justify-between max-lg:flex-col max-lg:justify-center max-lg:text-center">
       <div className="mx-auto lg:w-3/12">
         {showLogo && (
-          <Image
-            src="/images/ontego-subline.svg"
-            width={104}
-            height={55}
-            alt="ontego subline"
-            className="w-auto max-lg:mb-[60px] lg:pl-[75px]"
-          />
+          <div className="max-lg:mb-[60px] max-lg:w-[104px] lg:pl-[75px]">
+            <Image
+              src="/images/ontego-subline.svg"
+              width={104}
+              height={55}
+              alt="ontego subline"
+              priority
+            />
+          </div>
         )}
       </div>
       <div className="relative flex gap-[60px] max-lg:flex-col max-lg:justify-center  lg:w-9/12">
