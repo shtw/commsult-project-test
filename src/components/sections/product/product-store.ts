@@ -23,6 +23,8 @@ export interface ProductItem {
 }
 
 type State = {
+  productData: ProductItem[];
+  productFilterData: any;
   choice: string[];
   deviceType: string[];
   manufacturer: string[];
@@ -32,6 +34,8 @@ type State = {
 };
 
 type Action = {
+  setProductData: (value: ProductItem[]) => void;
+  setProductFilterData: (value: any) => void;
   setChoice: (value: string[]) => void;
   setDeviceType: (value: string[]) => void;
   setManuFacturer: (value: string[]) => void;
@@ -54,6 +58,13 @@ export const weightDefault = {
 };
 
 const initialState: State = {
+  productData: [],
+  productFilterData: {
+    choice: [],
+    deviceType: [],
+    manufacturer: [],
+    operationArea: [],
+  },
   choice: [defaultChoice],
   deviceType: [],
   manufacturer: [],
@@ -64,6 +75,8 @@ const initialState: State = {
 
 const useProductStore = create<State & Action>()((set) => ({
   ...initialState,
+  setProductData: (value) => set(() => ({ productData: value })),
+  setProductFilterData: (value) => set(() => ({ productFilterData: value })),
   setChoice: (value) => {
     if (value.length === 0) {
       set(() => ({ choice: [defaultChoice] }));

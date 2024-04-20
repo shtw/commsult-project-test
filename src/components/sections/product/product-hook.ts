@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { ProductItem, useProduct } from "./product-store";
-import productData from "@/data/products.json";
-import productFilter from "@/data/product-filter.json";
 import { filterItemClass } from "@/lib/utils";
 
 export default function useProductHook() {
   const [expandFilter, setExpandFilter] = useState<boolean>(false);
 
+  const productData = useProduct.use.productData();
+  const productFilterData = useProduct.use.productFilterData();
   const choice = useProduct.use.choice();
   const deviceType = useProduct.use.deviceType();
   const manufacturer = useProduct.use.manufacturer();
@@ -70,6 +70,7 @@ export default function useProductHook() {
       .filter(priceFilter)
       .filter(weightFilter);
   }, [
+    productData,
     choice,
     deviceType,
     manufacturer,
@@ -94,9 +95,9 @@ export default function useProductHook() {
     );
 
     const allFilter = [
-      ...productFilter.deviceType,
-      ...productFilter.manufacturer,
-      ...productFilter.operationArea,
+      ...productFilterData.deviceType,
+      ...productFilterData.manufacturer,
+      ...productFilterData.operationArea,
     ];
 
     const missingCategory = new Map<string, string>();
@@ -119,10 +120,17 @@ export default function useProductHook() {
         el.disabled = true;
       }
     });
-  }, [products, expandFilter]);
+  }, [
+    products,
+    productFilterData.deviceType,
+    productFilterData.manufacturer,
+    productFilterData.operationArea,
+    expandFilter,
+  ]);
 
   return {
     products,
+    productFilter: productFilterData,
     filter: {
       expandFilter,
       choice,

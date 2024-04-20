@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Hero from "@/components/sections/hero";
 import Paragraph from "@/components/sections/paragraph";
+import { promises as fs } from "fs";
+import { Suspense } from "react";
 
 const Product = dynamic(() => import("@/components/sections/product/product"));
 
@@ -11,7 +13,19 @@ export const metadata: Metadata = {
     "Mobilcomputer, mobile Scanner, Terminals und Handhelds von Zebra, Honeywell und Samsung für die mobile Datenerfassung.",
 };
 
-export default function MobilGerate() {
+export default async function MobilGerate() {
+  const productFile = await fs.readFile(
+    process.cwd() + "/src/data/products.json",
+    "utf8",
+  );
+  const filterFile = await fs.readFile(
+    process.cwd() + "/src/data/product-filter.json",
+    "utf8",
+  );
+
+  const products = JSON.parse(productFile);
+  const filter = JSON.parse(filterFile);
+
   return (
     <>
       <Hero
@@ -28,7 +42,7 @@ export default function MobilGerate() {
     robusten Smartphones
     und mobilen Druckern."
       />
-      <Product />
+      <Product data={products} filter={filter} />
     </>
   );
 }

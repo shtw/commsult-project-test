@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence, LazyMotion } from "framer-motion";
 import {
   Collapsible,
   CollapsibleContent,
@@ -13,10 +13,10 @@ import {
   ProductItem,
   Range,
   priceDefault,
+  useProduct,
   weightDefault,
 } from "./product-store";
 import { Slider } from "@/components/ui/slider";
-import productFilter from "@/data/product-filter.json";
 import useProductHook from "./product-hook";
 import { cn, filterItemClass } from "@/lib/utils";
 import { ArrowRight, XIcon } from "lucide-react";
@@ -24,6 +24,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useMainContext } from "@/components/main";
+
+const loadFeature = () =>
+  import("@/lib/dom-animation").then((res) => res.default);
 
 function FilterGroupChoice({
   label,
@@ -120,7 +123,7 @@ function FilterRange({
   );
 }
 
-function Filter() {
+function Filter({ data }: { data: any }) {
   const {
     filter: {
       expandFilter,
@@ -146,30 +149,26 @@ function Filter() {
       <Collapsible open={expandFilter} onOpenChange={setExpandFilter}>
         <FilterGroupChoice
           label="Auswahl"
-          items={productFilter.choice}
+          items={data.choice}
           defaultValue={choice}
           onValueChange={setChoice}
         />
         <FilterGroupChoice
           label="Gerätetyp"
-          items={productFilter.deviceType}
+          items={data.deviceType}
           defaultValue={deviceType}
           onValueChange={setDeviceType}
         />
-        <CollapsibleContent
-          // forceMount
-          // hidden={!isOpen}
-          className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down"
-        >
+        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
           <FilterGroupChoice
             label="Hersteller"
-            items={productFilter.manufacturer}
+            items={data.manufacturer}
             defaultValue={manufacturer}
             onValueChange={setManuFacturer}
           />
           <FilterGroupChoice
             label="Einsatzgebiet"
-            items={productFilter.operationArea}
+            items={data.operationArea}
             defaultValue={operationArea}
             onValueChange={setOperationalArea}
           />
@@ -291,54 +290,56 @@ function ProductCard({ item }: { item: ProductItem }) {
       className={cn(
         "inline-block align-top",
         expand
-          ? "transition-height h-[calc(300px+var(--height))]"
+          ? "h-[calc(300px+var(--height))] transition-height"
           : "transition-height-close",
       )}
     >
       <Collapsible open={expand} onOpenChange={setExpand} className="">
-        <motion.div
-          layout
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          transition={{
-            duration: 0.5,
-          }}
-        >
-          <div
-            className="relative flex cursor-pointer flex-col space-y-3"
-            onClick={() =>
-              setTimeout(() => {
-                setExpand(true);
-              }, 950)
-            }
+        <LazyMotion features={loadFeature}>
+          <m.div
+            layout
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{
+              duration: 0.5,
+            }}
           >
-            <div className="absolute -right-1 top-0 z-10 flex gap-1">
-              {item.rental && <Badge variant={"yellow"}>Mietgerat</Badge>}
-              {item.favorite && <Badge>Favorit</Badge>}
-            </div>
-            <div className="relative before:absolute before:left-0 before:top-0 before:h-full before:w-full before:bg-primary-text before:opacity-0 before:transition-opacity before:duration-200 before:ease-out hover:before:opacity-10">
-              <Image
-                src={item.image}
-                width={212}
-                height={255}
-                alt={item.name}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-              />
-            </div>
-            <h3
-              className={cn(
-                "text-center font-body text-sm",
-                expand ? "font-medium text-primary" : "",
-              )}
+            <div
+              className="relative flex cursor-pointer flex-col space-y-3"
+              onClick={() =>
+                setTimeout(() => {
+                  setExpand(true);
+                }, 950)
+              }
             >
-              {item.name}
-            </h3>
-          </div>
-        </motion.div>
+              <div className="absolute -right-1 top-0 z-10 flex gap-1">
+                {item.rental && <Badge variant={"yellow"}>Mietgerat</Badge>}
+                {item.favorite && <Badge>Favorit</Badge>}
+              </div>
+              <div className="relative before:absolute before:left-0 before:top-0 before:h-full before:w-full before:bg-primary-text before:opacity-0 before:transition-opacity before:duration-200 before:ease-out hover:before:opacity-10">
+                <Image
+                  src={item.image}
+                  width={212}
+                  height={255}
+                  alt={item.name}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
+              </div>
+              <h3
+                className={cn(
+                  "text-center font-body text-sm",
+                  expand ? "font-medium text-primary" : "",
+                )}
+              >
+                {item.name}
+              </h3>
+            </div>
+          </m.div>
+        </LazyMotion>
         <CollapsibleContent
           ref={collapseRef}
           forceMount
@@ -427,23 +428,38 @@ function Products() {
   ));
 }
 
-export default function Product() {
+export default function Product({
+  data,
+  filter,
+}: {
+  data: ProductItem[];
+  filter: any;
+}) {
+  // console.log(data, filter);
   const { mobile } = useMainContext();
+  const setProductData = useProduct.use.setProductData();
+
+  useEffect(() => {
+    setProductData(data);
+  }, [data, filter, setProductData]);
 
   if (mobile) {
     return <Mobile />;
   }
+  // return null;
 
   return (
     <>
       <div className="container-sm mb-40 hidden lg:block">
-        <Filter />
+        <Filter data={filter} />
         <div className="relative">
-          <motion.ul layout className="grid grid-cols-4 gap-x-4 gap-y-8">
-            <AnimatePresence>
-              <Products />
-            </AnimatePresence>
-          </motion.ul>
+          <LazyMotion features={loadFeature}>
+            <m.ul layout className="grid grid-cols-4 gap-x-4 gap-y-8">
+              <AnimatePresence>
+                <Products />
+              </AnimatePresence>
+            </m.ul>
+          </LazyMotion>
         </div>
       </div>
     </>
