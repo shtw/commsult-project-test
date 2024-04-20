@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
 import { roboto, capitolium } from "@/fonts";
 import { Header } from "@/components/layouts/header";
@@ -30,6 +31,7 @@ export default async function RootLayout({
         <Main mobile={isMobile}>{children}</Main>
         <Footer />
         <ScrollTop />
+        <SpeedInsights />
       </body>
     </html>
   );
